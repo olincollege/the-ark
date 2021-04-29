@@ -1,11 +1,14 @@
-from abc import ABC, abstractmethod
+import pygame, sys
+from pygame.locals import *
+import random, time
 
 
-class ArkView(ABC):
+class ArkView():
     """
     A class that represents the game view of the game,
     The Ark.
     """
+    pygame.init()
     
     def __init__(self, ark_game):
         """
@@ -20,7 +23,6 @@ class ArkView(ABC):
         """
         return self._game
     
-    @abstractmethod
     def draw(self):
         """
         Creates the game map that players will see when they play.
@@ -28,23 +30,7 @@ class ArkView(ABC):
         # We will use Pygame to populate this method
         pass
     
-class LevelOneArkView(ArkView):
-    
-    def draw(self):
-        """
-        Creates the game map that players will see when they play
-        the first level.
-        """
-        pass
 
-class LevelTwoArkView(ArkView):
-    
-    def draw(self):
-        """
-        Creates the game map that players will see when they play
-        the second level.
-        """
-        pass
     
     
     

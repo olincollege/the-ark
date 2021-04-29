@@ -1,23 +1,46 @@
-# Another possible implementatation is to have a single
-# move method that takes a direction as input
+import pygame, sys
+from pygame.locals import *
+import random, time
 
-class ArkController():
+pygame.init()
+
+class ArkController(pygame.sprite.Sprite):
     """
     A class that represents the player/controller of the game,
     The Ark.
     """
     
-    left = "keyboard input from <- arrow key"
-    right = "keyboard input from -> arrow key"
-    up = "keyboard input from up arrow key"
-    down = "keyboard input from down arrow key"
-    
     def __init__(self, ark_game):
         """
         Creates a new ArkController instance.
         """
-        self._game = ark_game
+        super().__init__() 
+        self._image = pygame.image.load("cute_cat.png")
+        self._surf = pygame.Surface((50, 100))
+        self._rect = self.surf.get_rect(center = (150, 500))
+        self._game = ark_game;
         
+    @property
+    def image(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._image
+    
+    @property
+    def surf(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._surf
+    
+    @property
+    def rect(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._rect
+    
     @property
     def game(self):
         """
@@ -26,32 +49,22 @@ class ArkController():
         return self._game
 
            
-    def move_left(self):
+    def move(self):
         """
         Makes the player's avatar move left from the
         player's POV.
         """
-        pass
+        pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[K_UP]:
+             self.rect.move_ip(0, -5)
+        if pressed_keys[K_DOWN]:
+             self.rect.move_ip(0,5)
+         
+        if self.rect.left > 0:
+            if pressed_keys[K_LEFT]:
+                self.rect.move_ip(-5, 0)
+        if self.rect.right < 400:    # < SCREEN_WIDTH     
+            if pressed_keys[K_RIGHT]:
+                self.rect.move_ip(5, 0)
     
-    def move_right(self):
-        """
-        Makes the player's avatar move right from the
-        player's POV.
-        """
-        pass
     
-
-    def move_up(self):
-        """
-        Makes the player's avatar move up from the
-        player's POV.
-        """
-        pass
-    
-
-    def move_down(self):
-        """
-        Makes the player's avatar move down from the
-        player's POV.
-        """
-        pass

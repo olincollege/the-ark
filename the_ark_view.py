@@ -29,7 +29,6 @@ class ArkView():
         """
         # We will use Pygame to populate this method
         pass
-
     
 
     

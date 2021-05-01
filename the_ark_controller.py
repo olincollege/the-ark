@@ -68,3 +68,5 @@ class ArkController(pygame.sprite.Sprite):
         if self.rect.right < game.SCREEN_WIDTH:    # < SCREEN_WIDTH     
             if pressed_keys[K_RIGHT]:
                 self.rect.move_ip(5, 0)
+    
+    

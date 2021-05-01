@@ -16,8 +16,8 @@ class ArkController(pygame.sprite.Sprite):
         """
         super().__init__() 
         self._image = pygame.image.load("cute_cat.png")
-        self._surf = pygame.Surface((50, 100))
-        self._rect = self.surf.get_rect(center = (150, 500))
+        self._surf = pygame.Surface((61, 61))
+        self._rect = self.surf.get_rect(center = (31, 61))
         self._game = ark_game;
         
     @property
@@ -49,22 +49,22 @@ class ArkController(pygame.sprite.Sprite):
         return self._game
 
            
-    def move(self):
+    def move(self, game):
         """
         Makes the player's avatar move left from the
         player's POV.
         """
         pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[K_UP]:
-             self.rect.move_ip(0, -5)
-        if pressed_keys[K_DOWN]:
-             self.rect.move_ip(0,5)
+        if self.rect.top > 1:
+            if pressed_keys[K_UP]:
+                 self.rect.move_ip(0, -5)
+        if self.rect.bottom < game.SCREEN_HEIGHT - 1:
+            if pressed_keys[K_DOWN]:
+                 self.rect.move_ip(0,5)
          
-        if self.rect.left > 0:
+        if self.rect.left > 1:
             if pressed_keys[K_LEFT]:
                 self.rect.move_ip(-5, 0)
-        if self.rect.right < 400:    # < SCREEN_WIDTH     
+        if self.rect.right < game.SCREEN_WIDTH:    # < SCREEN_WIDTH     
             if pressed_keys[K_RIGHT]:
                 self.rect.move_ip(5, 0)
-    
-    

@@ -8,7 +8,9 @@ class ArkGame():
     A class that represents the state of the game,
     The Ark.
     """
-    pygame.init()
+    SCREEN_WIDTH = 610
+    SCREEN_HEIGHT = 735
+    SPEED = 5
     
     def __init__(self):
         self._level = 1
@@ -46,6 +48,47 @@ class ArkGame():
             and redraws the map (view) of the game.
         """
         pass
+
+    
+class Block(pygame.sprite.Sprite):
+    
+    def __init__(self, ark_game, x, y):
+        """
+        Creates a new Block sprite.
+        """
+        super().__init__() 
+        self._image = pygame.image.load("brick2.png")
+        self._surf = pygame.Surface((61, 61))
+        self._rect = self.surf.get_rect(center = (x, y))
+        self._game = ark_game;
+    
+    @property
+    def image(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._image
+    
+    @property
+    def surf(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._surf
+    
+    @property
+    def rect(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._rect
+    
+    @property
+    def game(self):
+        """
+        Return the value of the private attribute, self._game.
+        """
+        return self._game
     
 class LevelOneArkGame():
     
@@ -64,6 +107,6 @@ class LevelTwoArkGame():
         the second level.
         """
         pass   
-    
+
     
     

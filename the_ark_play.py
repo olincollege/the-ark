@@ -20,16 +20,8 @@ def main():
     WHITE = (255, 255, 255)
     
     game = ArkGame()
-    game_view = ArkView(game)
-    player = ArkController(game)
     
-    #this block of code can be a View class method that starts the screen
-    DISPLAYSURF = pygame.display.set_mode((game.SCREEN_WIDTH, game.SCREEN_HEIGHT))
-    DISPLAYSURF.fill(WHITE)
-    pygame.display.set_caption("Game")
-    
-    # these will eventually be class attributes of the Game class
-    
+    # these will eventually be class attributes of the level one Game class
     imageList1 = [Block(game, 92, 92 + (y_pos*61)) for y_pos in range(0,10,1)]
     imageList2 = [Block(game, 92 + (x_pos*61), 92) for x_pos in range(1,3,1)]
     imageList3 = [Block(game, 92 + (x_pos*61), 641) for x_pos in range(1,3,1)]
@@ -41,6 +33,18 @@ def main():
     blocks = pygame.sprite.Group(imageList)
     
     all_sprites = pygame.sprite.Group(blocks)
+    
+    game_view = ArkView(game)
+    player = ArkController(game,blocks)
+    
+    #this block of code can be a View class method that starts the screen
+    DISPLAYSURF = pygame.display.set_mode((game.SCREEN_WIDTH, game.SCREEN_HEIGHT))
+    DISPLAYSURF.fill(WHITE)
+    pygame.display.set_caption("Game")
+    
+    
+    
+    
     all_sprites.add(player)
     
  
@@ -56,7 +60,21 @@ def main():
         DISPLAYSURF.fill(BLUE)
         for entity in all_sprites:
             DISPLAYSURF.blit(entity.image, entity.rect)
+        
         player.move(game)
+        
+        
+        # collision detection between players and blocks, just test code to ensure
+        # collision detection works
+        #if pygame.sprite.spritecollideany(player, blocks):
+            #DISPLAYSURF.fill(RED)
+            #pygame.display.update()
+            #for entity in all_sprites:
+                #entity.kill() 
+            #time.sleep(2)
+            #pygame.quit()
+            #sys.exit()
+        
         pygame.display.update()
         
         FramePerSec.tick(FPS)

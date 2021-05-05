@@ -90,46 +90,6 @@ class Block(pygame.sprite.Sprite):
         """
         return self._game
     
-class Seeds(pygame.sprite.Sprite):
-    
-    def __init__(self,ark_game,x,y)
-        """
-        Creates new Seed sprites
-        """
-        super.__init__()
-        self._image = pygame.image.load("cute_pomegranete_theark.png")
-        self._surf = pygame.Surface(61,61)
-        self._rect = self.surf.get_rect(center = (x, y))
-        self._game = ark_game;
-        
-    @property
-    def image(self):
-        """
-        Return the value of the private attribute, self._game.
-        """
-        return self._image
-    
-    @property
-    def surf(self):
-        """
-        Return the value of the private attribute, self._game.
-        """
-        return self._surf
-    
-    @property
-    def rect(self):
-        """
-        Return the value of the private attribute, self._game.
-        """
-        return self._rect
-    
-    @property
-    def game(self):
-        """
-        Return the value of the private attribute, self._game.
-        """
-        return self._game        
-    
 class LevelOneArkGame():
     
     def draw(self):

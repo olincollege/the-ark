@@ -1,4 +1,3 @@
-# The Ark Game
 
 Hello Player! Welcome to the Ark, Humanitiy's last refuge. In order to be saved, you need to collect essential seeds and avoid being devoured.
 

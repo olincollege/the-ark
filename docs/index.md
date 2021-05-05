@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+# The Ark Game
 
-You can use the [editor on GitHub](https://github.com/olincollege/the-ark-game/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Hello Player! Welcome to the Ark, Humanitiy's last refuge. In order to be saved, you need to collect essential seeds and avoid being devoured.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Game Set Up
 
-### Markdown
+## How to Use
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+In order to play the game, you need to have pygame installed in your computer([Pygame Installation Instructions](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation)).
 
-```markdown
-Syntax highlighted code block
+## Resource Links
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/olincollege/the-ark-game/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

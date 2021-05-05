@@ -17,7 +17,8 @@ Download The Ark [repository](https://github.com/olincollege/the-ark-game) as a 
 
 ## Gallery
 
-![Cute Watermelon Seed](cutewatermelon_theark)
+![image](https://user-images.githubusercontent.com/48631164/117102015-6728ae00-ad45-11eb-918b-bd6bfe697d46.png)
+
 
 ## Resource Links
 

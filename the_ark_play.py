@@ -12,71 +12,91 @@ def main():
     
     FPS = 60
     FramePerSec = pygame.time.Clock()
-
-    BLUE  = (0, 0, 255)
-    RED   = (255, 0, 0)
-    GREEN = (0, 255, 0)
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
+    
     
     game = ArkGame()
-    
-    # these will eventually be class attributes of the level one Game class
-    imageList1 = [Block(game, 92, 92 + (y_pos*61)) for y_pos in range(0,10,1)]
-    imageList2 = [Block(game, 92 + (x_pos*61), 92) for x_pos in range(1,3,1)]
-    imageList3 = [Block(game, 92 + (x_pos*61), 641) for x_pos in range(1,3,1)]
-    blocks = pygame.sprite.Group(imageList1, imageList2, imageList3)
-    imageList4 = [Block(game, 519, 92 + (y_pos*61)) for y_pos in range(0,10,1)]
-    imageList5 = [Block(game, 336 + (x_pos*61), 92) for x_pos in range(1,3,1)]
-    imageList6 = [Block(game, 336 + (x_pos*61), 641) for x_pos in range(1,3,1)]
-    imageList = imageList1+imageList2+imageList3+imageList4+imageList5+imageList6
-    blocks = pygame.sprite.Group(imageList)
-    
-    all_sprites = pygame.sprite.Group(blocks)
-    
     game_view = ArkView(game)
-    player = ArkController(game,blocks)
+    
+    #Setting up Fonts
+    font = pygame.font.SysFont("Verdana", 60)
+    font_small = pygame.font.SysFont("Verdana", 20)
+    game_over = font.render("Game Over", True, game.BLACK)
+    game_won = font.render("You won!", True, game.BLACK)
+    
+    all_sprites = pygame.sprite.Group()
+    movable_sprites = pygame.sprite.Group()
+    
+    comets = pygame.sprite.Group(Comet(game,4), Comet(game,5), Comet(game,6))
+    all_sprites.add(comets)
+    movable_sprites.add(comets)
+    
+    seed_img = "carrot.png"
+    seeds = pygame.sprite.Group(Seed(game, seed_img), Seed(game, seed_img),
+                                Seed(game, seed_img))
+    all_sprites.add(seeds)
+    
+    player = ArkController(game, comets, seeds) 
+    all_sprites.add(player)
+    movable_sprites.add(player)
+    
+    
     
     #this block of code can be a View class method that starts the screen
     DISPLAYSURF = pygame.display.set_mode((game.SCREEN_WIDTH, game.SCREEN_HEIGHT))
-    DISPLAYSURF.fill(WHITE)
+    DISPLAYSURF.fill(game.WHITE)
     pygame.display.set_caption("Game")
     
     
-    
-    
-    all_sprites.add(player)
-    
- 
     while True:     
         for event in pygame.event.get():              
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
         
+        # this block of code could be an "update_view" method that paint the screen
+        # white and redraw the player; this is definitely a View method
+        DISPLAYSURF.blit(game.background, (0,0))
+        scores = font_small.render(f"SCORE: {game.score}", True, game.WHITE)
+        DISPLAYSURF.blit(scores, (game.SCREEN_WIDTH-100,10)) 
+        life = font_small.render(f"LIVES: {game.lives}", True, game.WHITE)
+        DISPLAYSURF.blit(life, (game.SCREEN_WIDTH-100,30))
         
+        for sprite in all_sprites:
+            DISPLAYSURF.blit(sprite.image, sprite.rect)
+            if sprite in movable_sprites:
+                sprite.move()
         
-        # this block of code could be an "update_view" method that paint the screen           white and redraw the player; this is definitely a View method
-        DISPLAYSURF.fill(BLUE)
-        for entity in all_sprites:
-            DISPLAYSURF.blit(entity.image, entity.rect)
+        if pygame.sprite.spritecollideany(player, seeds):
+            item = pygame.sprite.spritecollideany(player, seeds)
+            new_score = game.inc_score()
+            item.kill()
+            if new_score == 3:
+                DISPLAYSURF.fill(game.BLUE)
+                DISPLAYSURF.blit(game_won, (game.SCREEN_WIDTH/2, game.SCREEN_HEIGHT/2)) 
+                pygame.display.update()
+                for sprite in all_sprites:
+                    sprite.kill() 
+                time.sleep(2)
+                pygame.quit()
+                sys.exit()
+               
+        if pygame.sprite.spritecollideany(player, comets):
+            enemy = pygame.sprite.spritecollideany(player, comets)
+            lives_left = game.lose_life()
+            if lives_left == 0:    
+                DISPLAYSURF.fill(game.RED)
+                DISPLAYSURF.blit(game_over, (game.SCREEN_WIDTH/2, game.SCREEN_HEIGHT/2)) 
+                pygame.display.update()
+                for sprite in all_sprites:
+                    sprite.kill() 
+                time.sleep(2)
+                pygame.quit()
+                sys.exit()
+            else:
+                enemy.rect.center = (random.randint(40, game.SCREEN_WIDTH-40), 0)
         
-        player.move(game)
-        
-        
-        # collision detection between players and blocks, just test code to ensure
-        # collision detection works
-        #if pygame.sprite.spritecollideany(player, blocks):
-            #DISPLAYSURF.fill(RED)
-            #pygame.display.update()
-            #for entity in all_sprites:
-                #entity.kill() 
-            #time.sleep(2)
-            #pygame.quit()
-            #sys.exit()
-        
+         
         pygame.display.update()
-        
         FramePerSec.tick(FPS)
 
 if __name__ == "__main__":

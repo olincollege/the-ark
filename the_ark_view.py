@@ -60,7 +60,7 @@ class ArkView():
             sprites that have move methods.
         
         Returns:
-        This method does not return anything.
+            This method does not return anything.
         """
         # updates the window screen and the Score and Lives text
         DISPLAYSURF.blit(self.game.background, (0,0))
@@ -74,6 +74,43 @@ class ArkView():
             DISPLAYSURF.blit(sprite.image, sprite.rect)
             if sprite in movable_sprites:
                 sprite.move()
+                
+    def game_won(self, DISPLAYSURF):
+        """
+        Updates screen background and tells player that they have
+        won the game.
+        
+        Args:
+            DISPLAYSURF: The window screen surface of the game.
+            
+        Returns:
+            This method does not return anything.
+        """
+        game_won = font.render("You won!", True, self.game.BLACK)
+        img = pygame.image.load("win.jpg")
+        DISPLAYSURF.blit(img, (0,0))
+        DISPLAYSURF.blit(game_won, (self.game.SCREEN_WIDTH/2, 
+                                    self.game.SCREEN_HEIGHT/2)) 
+        pygame.display.update()
+        
+        
+    def game_lost(self, DISPLAYSURF):
+        """
+        Updates screen background and tells player that they have
+        lost the game.
+        
+        Args:
+            DISPLAYSURF: The window screen surface of the game.
+            
+        Returns:
+            This method does not return anything.
+        """
+        game_over = font.render("Game Over", True, self.game.BLACK)
+        img = pygame.image.load("lose.jpg")
+        DISPLAYSURF.blit(img, (0,0))
+        DISPLAYSURF.blit(game_over, (self.game.SCREEN_WIDTH/2, 
+                                     self.game.SCREEN_HEIGHT/2)) 
+        pygame.display.update()
     
     
     

@@ -14,11 +14,11 @@ class ArkGame():
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     
-    SCREEN_WIDTH = 813
-    SCREEN_HEIGHT = 700
+    SCREEN_WIDTH = 682
+    SCREEN_HEIGHT = 512
     SPEED = 5
     
-    background = pygame.image.load("volcano.jpg")
+    background = pygame.image.load("volcano.jpeg")
     
     
     
@@ -78,8 +78,8 @@ class Comet(pygame.sprite.Sprite):
         """
         super().__init__()
         self._game = game;
-        self._image = pygame.image.load("fire.png")
-        self._surf = pygame.Surface((61, 61))
+        self._image = pygame.image.load("comet.png")
+        self._surf = pygame.Surface((42,31))
         self._rect = self.surf.get_rect(center = \
                                   (random.randint(40,self.game.SCREEN_WIDTH-40),0))
         self._speed = speed;
@@ -90,7 +90,7 @@ class Comet(pygame.sprite.Sprite):
         at a new, random x-position at the top of the screen.
         """
         self.rect.move_ip(0,self.speed)
-        if (self.rect.top > self.game.SCREEN_HEIGHT):
+        if (self.rect.top > self._game.SCREEN_HEIGHT):
             self.rect.top = 0
             self.rect.center = (random.randint(40, self.game.SCREEN_WIDTH-40), 0)
     
@@ -127,7 +127,7 @@ class Comet(pygame.sprite.Sprite):
     
 class Seed(pygame.sprite.Sprite):
     
-    def __init__(self, game, img):
+    def __init__(self, game, img, xpos, ypos):
         """
         Creates a new Comet sprite.
         """
@@ -135,10 +135,10 @@ class Seed(pygame.sprite.Sprite):
         self._game = game;
         self._image = pygame.image.load(img)
         self._surf = pygame.Surface((61, 61))
-        self._rect = self.surf.get_rect(center = \
-                                  (random.randint(40,self.game.SCREEN_WIDTH-40),
-                                      random.randint(40,self.game.SCREEN_WIDTH-40)))
-    
+        #self._rect = self.surf.get_rect(center = \
+                                  #(random.randint(80,self.game.SCREEN_WIDTH-80),
+                                      #random.randint(80,self.game.SCREEN_HEIGHT-80)))
+        self._rect = self.surf.get_rect(center = (xpos, ypos)) 
     @property
     def image(self):
         """

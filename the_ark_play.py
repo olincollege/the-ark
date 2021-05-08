@@ -17,24 +17,31 @@ def main():
     game = ArkGame()
     game_view = ArkView(game)
     
+<<<<<<< HEAD
+=======
+    #Setting up Fonts
+    font = pygame.font.SysFont("Verdana", 60)
+    font_small = pygame.font.SysFont("Verdana", 30)
+>>>>>>> bed474c105f5e8167dd1e7c1f2526af747bd8266
     game_over = font.render("Game Over", True, game.BLACK)
     game_won = font.render("You won!", True, game.BLACK)
     
     all_sprites = pygame.sprite.Group()
-    movable_sprites = pygame.sprite.Group()
+    moveable_sprites = pygame.sprite.Group()
     
-    comets = pygame.sprite.Group(Comet(game,4), Comet(game,5), Comet(game,6))
+    comets = pygame.sprite.Group(Comet(game,3), Comet(game,4), Comet(game,5))
     all_sprites.add(comets)
-    movable_sprites.add(comets)
+    moveable_sprites.add(comets)
     
     seed_img = "carrot.png"
-    seeds = pygame.sprite.Group(Seed(game, seed_img), Seed(game, seed_img),
-                                Seed(game, seed_img))
+    seeds = pygame.sprite.Group(Seed(game, seed_img, 200, 400), 
+                                Seed(game, seed_img, 500, 250),
+                                Seed(game, seed_img, 250, 100))
     all_sprites.add(seeds)
     
     player = ArkController(game, comets, seeds) 
     all_sprites.add(player)
-    movable_sprites.add(player)
+    moveable_sprites.add(player)
     
     
     
@@ -47,20 +54,42 @@ def main():
                 pygame.quit()
                 sys.exit()
         
+<<<<<<< HEAD
         # redraws and updates everything on the screen, including the
         # background, sprites, and texts
         game_view.update_screen(DISPLAYSURF, all_sprites, movable_sprites)
+=======
+        # this block of code could be an "update_view" method that paint the screen
+        # white and redraw the player; this is definitely a View method
+        DISPLAYSURF.blit(game.background, (0,0))
+        scores = font_small.render(f"SCORE: {game.score}", True, game.WHITE)
+        DISPLAYSURF.blit(scores, (game.SCREEN_WIDTH-150,10)) 
+        life = font_small.render(f"LIVES: {game.lives}", True, game.WHITE)
+        DISPLAYSURF.blit(life, (game.SCREEN_WIDTH-150,35))
+        
+        #for sprite in all_sprites:
+            #DISPLAYSURF.blit(sprite.image, sprite.rect)
+            #if sprite in movable_sprites:
+                #sprite.move()
+        DISPLAYSURF.blit(seeds.sprites()[0].image, seeds.sprites()[0].rect)
+        for sprite in moveable_sprites:
+            DISPLAYSURF.blit(sprite.image, sprite.rect)
+            sprite.move()
+>>>>>>> bed474c105f5e8167dd1e7c1f2526af747bd8266
         
         if pygame.sprite.spritecollideany(player, seeds):
             item = pygame.sprite.spritecollideany(player, seeds)
             new_score = game.inc_score()
             item.kill()
+            if seeds:
+                DISPLAYSURF.blit(seeds.sprites()[0].image, seeds.sprites()[0].rect)
+            DISPLAYSURF.blit(sprite.image, sprite.rect)
             if new_score == 3:
                 DISPLAYSURF.fill(game.BLUE)
-                DISPLAYSURF.blit(game_won, (game.SCREEN_WIDTH/2, game.SCREEN_HEIGHT/2)) 
+                DISPLAYSURF.blit(game_won, (220, 200)) 
                 pygame.display.update()
                 for sprite in all_sprites:
-                    sprite.kill() 
+                    sprite.remove() 
                 time.sleep(2)
                 pygame.quit()
                 sys.exit()
@@ -70,7 +99,7 @@ def main():
             lives_left = game.lose_life()
             if lives_left == 0:    
                 DISPLAYSURF.fill(game.RED)
-                DISPLAYSURF.blit(game_over, (game.SCREEN_WIDTH/2, game.SCREEN_HEIGHT/2)) 
+                DISPLAYSURF.blit(game_over, (190, 200)) 
                 pygame.display.update()
                 for sprite in all_sprites:
                     sprite.kill() 

@@ -17,7 +17,7 @@ class ArkController(pygame.sprite.Sprite):
         """
         super().__init__()
         self._game = game;
-        self._image = pygame.image.load("cute_cat.png")
+        self._image = pygame.image.load("astronaut.png")
         self._surf = pygame.Surface((61, 61))
         self._rect = self.surf.get_rect(center = (100, self.game.SCREEN_HEIGHT-61))
         self._comets = comets

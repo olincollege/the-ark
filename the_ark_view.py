@@ -55,7 +55,7 @@ class ArkView():
         """
         Updates and redraws all sprites and text on the screen.
         Args:
-            DISPLAYSURF: The window screen surface of the game
+            display_surf: The window screen surface of the game
             all_sprites: The Sprite Group that holds all of the sprites
             movable_sprites: The Sprite Group that holds all of the
             sprites that have move methods.
@@ -72,13 +72,13 @@ class ArkView():
         for sprite in all_sprites:
             display_surf.blit(sprite.image, sprite.rect)
             if sprite in movable_sprites:
-                sprite.move()       
+                sprite.move()  
     def game_won(self, display_surf):
         """
         Updates screen background and tells player that they have
         won the game.
         Args:
-            DISPLAYSURF: The window screen surface of the game.
+            display_surf: The window screen surface of the game.
         Returns:
             This method does not return anything.
         """
@@ -93,7 +93,7 @@ class ArkView():
         Updates screen background and tells player that they have
         lost the game.
         Args:
-            DISPLAYSURF: The window screen surface of the game.
+            display_surf: The window screen surface of the game.
         Returns:
             This method does not return anything.
         """

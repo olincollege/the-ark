@@ -14,12 +14,17 @@ class ArkGame():
     WHITE = (255, 255, 255)
     SCREEN_WIDTH = 682
     SCREEN_HEIGHT = 512
-    SPEED = 5
     background = pygame.image.load("volcano.jpeg")
     def __init__(self):
         self._level = 1
         self._lives = 3
         self._score = 0
+    @property
+    def level(self):
+        """
+        Return the value of the private attribute, self._level.
+        """
+        return self._level
     @property
     def lives(self):
         """
@@ -31,16 +36,29 @@ class ArkGame():
         """
         Return the value of the private attribute, self._score.
         """
-        return self._score  
+        return self._score
+    def set_lives(self, num):
+        """
+        Sets the number of lives the player has to the int, num.
+
+        Args:
+            num: An int the represents the number that the player's
+            number of lives will be set to.
+        Returns:
+            This method does not return anything.
+        """
+        self._lives = num
     def lose_life(self):
         """
         Decreases the number of lives the player's
-        avater has.
+        avater has. If the player has zero lives, zero is returned.
 
         Returns:
             Returns the number of lives the player has left.
         """
         self._lives -= 1
+        if self._lives < 0:
+            self._lives = 0
         return self._lives
     def inc_score(self):
         """
@@ -57,18 +75,20 @@ class ArkGame():
             and redraws the map (view) of the game.
         """
         pass
-    
 class LevelOneArkGame(ArkGame):
     """
     A class that represents the state of the first level of the
     game, The Ark.
     """
     background = pygame.image.load("volcano.jpeg")
+    
     def __init__(self):
         """
-        Creates a Level Two game model.
+        Creates a Level One game model.
         """
-        super().__init__()  
+        super().__init__()
+        self._seeds = self.generate_seeds()
+        self._comets = self.generate_obstacles()
     def generate_seeds(self):
         """
         Creates the seed icons for the level, which are carrots.
@@ -82,7 +102,6 @@ class LevelOneArkGame(ArkGame):
                                     Seed(seed_img, 500, 250),
                                     Seed(seed_img, 250, 100))
         return seeds
-
     def generate_obstacles(self):
         """
         Creates the obstacles for the level, which are three comets.
@@ -92,8 +111,20 @@ class LevelOneArkGame(ArkGame):
         Returns:
             A list of comets to be spawned in Level One.
         """
-        comets = pygame.sprite.Group(Comet(self,2), Comet(self,3), Comet(self,4))  
+        comets = pygame.sprite.Group(Comet(self,2), Comet(self,3), Comet(self,4))
         return comets
+    @property
+    def seeds(self):
+        """
+        Return the value of the private attribute, self._seeds.
+        """
+        return self._seeds
+    @property
+    def comets(self):
+        """
+        Return the value of the private attribute, self._comets.
+        """
+        return self._comets 
 class LevelTwoArkGame():
     """
     A class that represents the state of the second level of the
@@ -147,7 +178,7 @@ class Comet(pygame.sprite.Sprite):
         """
         Return the value of the private attribute, self._rect.
         """
-        return self._rect 
+        return self._rect
     @property
     def game(self):
         """
@@ -159,7 +190,7 @@ class Comet(pygame.sprite.Sprite):
         """
         Return the value of the private attribute, self._speed.
         """
-        return self._speed 
+        return self._speed
 class Seed(pygame.sprite.Sprite):
     """
     A class that represents the seed icons that are the goals

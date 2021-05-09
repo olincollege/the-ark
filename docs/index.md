@@ -4,7 +4,7 @@ Hello Player! Welcome to the Ark, Humanitiy's last refuge. In order to be saved,
 ## Game Set Up
 
 ### Background
-The worst of the climate change predictions have come true: Earth can no longer sustain life, and the clock is running out. Luckily, a group of smart individuals were able to convince the world's leaders to fund another International Space Station able to sustain human life and travel the void of space.However, space is limited and you do not have the funds nor the connections to secure a spot. Fortunately you are a scientist and farmer, who was obsessed with developing extremely durable seeds, which will gaurentee you a spot. You have to go and collect those seeds from your fields, which are being bombarded by falling debri.
+The worst of the climate change predictions have come true: Earth can no longer sustain life, and the clock is running out. Luckily, a group of smart individuals were able to convince the world's leaders to fund another International Space Station able to sustain human life and travel the void of space called the Ark.As a member of the ark’s agricultural department, the player’s job is to collect seeds of various essential fruits and vegetables from a hostile earth to bring back to the ark to cultivate them. On their journey they must avoid falling comets, and other obstacles as they travel to various regions.
 
 ## Game Mechanics
 Use the arrow keys on your keyboard to navigate a level. In order to pass a level, you need to pick up all the seeds without being hit by a comet.
@@ -16,8 +16,7 @@ In order to play the game, you need to have pygame installed in your computer fi
 Download The Ark [repository](https://github.com/olincollege/the-ark-game) as a zip file, extract it, and run the-ark-play.py.
 
 ## Gallery
-
-![image](https://user-images.githubusercontent.com/48631164/117102015-6728ae00-ad45-11eb-918b-bd6bfe697d46.png)
+![image](https://i.pinimg.com/originals/ca/0f/71/ca0f716c1ff573645ad557e5ee7be120.png)
 
 
 ## Resource Links

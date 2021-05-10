@@ -224,7 +224,7 @@ class Seed(pygame.sprite.Sprite):
 
     def __init__(self, img, xpos, ypos):
         """
-        Creates a new Comet sprite.
+        Creates a new Seed sprite.
         """
         super().__init__()
         self._image = pygame.image.load(img)

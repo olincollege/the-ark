@@ -56,8 +56,7 @@ class ArkController(pygame.sprite.Sprite):
         Return the value of the private attribute, self._seeds.
         """
         return self._seeds
- 
-    
+
     def move(self):
         """
         Makes the player's avatar move left from the
@@ -84,7 +83,7 @@ class ArkController(pygame.sprite.Sprite):
         if self.rect.left > 1:
             # Moves the player 5 pixels in the -x direction when
             # the left arrow key is pressed
-            if pressed_keys[K_LEFT]:                
+            if pressed_keys[K_LEFT]:           
                 self.rect.move_ip(-5, 0)
         if self.rect.right < self.game.SCREEN_WIDTH:
             # Moves the player 5 pixels in the +x direction when

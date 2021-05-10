@@ -63,7 +63,7 @@ class ArkGame():
     def inc_score(self):
         """
         Increases the score of the player when a seed is collected.
-      
+
         Returns:
             Returns the number of seeds the player has collected.
         """
@@ -74,14 +74,14 @@ class ArkGame():
             Moves the player to the next level of the game
             and redraws the map (view) of the game.
         """
-        pass
+
 class LevelOneArkGame(ArkGame):
     """
     A class that represents the state of the first level of the
     game, The Ark.
     """
     background = pygame.image.load("volcano.jpeg")
-    
+
     def __init__(self):
         """
         Creates a Level One game model.
@@ -124,7 +124,7 @@ class LevelOneArkGame(ArkGame):
         """
         Return the value of the private attribute, self._comets.
         """
-        return self._comets 
+        return self._comets
 class LevelTwoArkGame():
     """
     A class that represents the state of the second level of the
@@ -135,7 +135,7 @@ class LevelTwoArkGame():
         """
         Creates a Level Two game model.
         """
-        super().__init__()    
+        super().__init__()
 class Comet(pygame.sprite.Sprite):
     """
     A class that represents the falling comets, which are

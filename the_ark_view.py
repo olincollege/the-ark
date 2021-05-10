@@ -46,7 +46,7 @@ class ArkView():
             The surface that represents the window screen the
             game.
         """
-        display_surf = pygame.display.set_mode((self.game.SCREEN_WIDTH, 
+        display_surf = pygame.display.set_mode((self.game.SCREEN_WIDTH,
                                                self.game.SCREEN_HEIGHT))
         display_surf.fill(self.game.WHITE)
         pygame.display.set_caption("The Ark")
@@ -72,7 +72,7 @@ class ArkView():
         for sprite in all_sprites:
             display_surf.blit(sprite.image, sprite.rect)
             if sprite in movable_sprites:
-                sprite.move()  
+                sprite.move()
     def game_won(self, display_surf):
         """
         Updates screen background and tells player that they have

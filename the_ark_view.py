@@ -2,8 +2,7 @@
 The View class for The Ark.
 """
 import pygame
-
-#Setting up Fonts
+pygame.init()
 
 
 class ArkView():
@@ -16,7 +15,7 @@ class ArkView():
         Creates a new ArkController instance.
         """
         self._game = ark_game
-        self._font = pygame.font.SysFont("Verdana", 60)
+        self._font = pygame.font.SysFont("Consolas", 90)
         self._font_small = pygame.font.SysFont("Verdana", 20)
     @property
     def game(self):
@@ -46,6 +45,7 @@ class ArkView():
             The surface that represents the window screen the
             game.
         """
+        pygame.init()
         display_surf = pygame.display.set_mode((self.game.SCREEN_WIDTH,
                                                self.game.SCREEN_HEIGHT))
         display_surf.fill(self.game.WHITE)
@@ -85,8 +85,7 @@ class ArkView():
         game_won = self._font.render("You won!", True, self.game.WHITE)
         img = pygame.image.load("win.jpg")
         display_surf.blit(img, (0,0))
-        display_surf.blit(game_won, (self.game.SCREEN_WIDTH/2,
-                                     self.game.SCREEN_HEIGHT/2))
+        display_surf.blit(game_won, (130, 150))
         pygame.display.update()
     def game_lost(self, display_surf):
         """
@@ -100,7 +99,6 @@ class ArkView():
         game_over = self._font.render("Game Over", True, self.game.WHITE)
         img = pygame.image.load("lose.jpg")
         display_surf.blit(img, (0,0))
-        display_surf.blit(game_over, (self.game.SCREEN_WIDTH/2,
-                                      self.game.SCREEN_HEIGHT/2))
+        display_surf.blit(game_over, (100, 150))
         pygame.display.update()
         

@@ -60,20 +60,30 @@ class ArkGame():
         if self._lives < 0:
             self._lives = 0
         return self._lives
+    def set_score(self, num):
+        """
+        Sets the score of the player to the int, num.
+
+        Args:
+            num: An int the represents the number that the player's
+            score will be set to.
+        Returns:
+            This method does not return anything.
+        """
+        self._score = num
     def inc_score(self):
         """
-        Increases the score of the player when a seed is collected.
+        Increases the score of the player when a seed is collected. If
+        the player already has the max score of 3, their score does not
+        increase.
 
         Returns:
             Returns the number of seeds the player has collected.
         """
         self._score += 1
+        if self._score >3:
+            self._score = 3
         return self._score
-    def next_level(self):
-        """
-            Moves the player to the next level of the game
-            and redraws the map (view) of the game.
-        """
 
 class LevelOneArkGame(ArkGame):
     """

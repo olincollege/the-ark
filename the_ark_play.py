@@ -9,11 +9,10 @@ import random
 import pygame
 from pygame.locals import QUIT
 
-from the_ark_game import LevelOneArkGame, Seed, Comet
+from the_ark_game import LevelOneArkGame
 from the_ark_view import ArkView
 from the_ark_controller import ArkController
 
-pygame.init()
 SECONDS = 60
 frames_per_second = pygame.time.Clock()
 game = LevelOneArkGame()

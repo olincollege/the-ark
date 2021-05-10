@@ -29,16 +29,16 @@ Download The Ark [repository](https://github.com/olincollege/the-ark-game) as a 
 
 
 ## Creators
-Gabrielle Blake - https://github.com/gabbyblake
+Gabrielle Blake - (https://github.com/gabbyblake)
 
-Aissa Conde - https://github.com/AiConde
+Aissa Conde - (https://github.com/AiConde)
 
 ## Resource Links
 Here are the original links for the images we used for our game:
 
-- Carrot Seed Icon - https://www.brik.co/blogs/pixel-art/carrot-pixel-art
-- Level 1 Background - https://mathieu-chauderlot.artstation.com/projects/qaZwP
-- Player - http://pixelartmaker.com/art/8688dacfe59df70
-- Comet Obstacles - http://pixelartmaker.com/art/8688dacfe59df70
+- Carrot Seed Icon - (https://www.brik.co/blogs/pixel-art/carrot-pixel-art)
+- Level 1 Background - (https://mathieu-chauderlot.artstation.com/projects/qaZwP)
+- Player - (http://pixelartmaker.com/art/8688dacfe59df70)
+- Comet Obstacles - (http://pixelartmaker.com/art/8688dacfe59df70)
 
 We used [Pixel Art](https://www.pixilart.com/) in order to resize the images for our game.

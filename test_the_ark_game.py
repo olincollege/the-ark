@@ -8,9 +8,6 @@ from the_ark_controller import ArkController
 test_model = LevelOneArkGame()
 test_seeds = test_model.generate_seeds()
 test_obstacles = test_model.generate_obstacles()
-test_controller = ArkController(test_model,
-                                test_obstacles,
-                                test_seeds)
 
 initial_game_cases = [
     # Check that black color constant is the correct value
@@ -29,7 +26,7 @@ initial_game_cases = [
     (test_model.score, 0),
 ]
 
-set_life_cases =[
+set_life_cases = [
     # Check that the player's lives are set to 0 correctly
     (0, 0),
     # Check that the player's lives are set to 1 correctly
@@ -66,7 +63,7 @@ life_decrease_cases = [
     ((0, 1), 0),
 ]
 
-set_score_cases =[
+set_score_cases = [
     # Check that the player's score is set to 0 correctly
     (0, 0),
     # Check that the player's score is set to 1 correctly
@@ -99,11 +96,14 @@ score_increase_cases = [
 
 comet_xposition_cases = [
     # Check that the first comet spawns in the correct x position range
-    (test_obstacles.sprites()[0].rect.centerx, (40, test_model.SCREEN_WIDTH-40)),
+    (test_obstacles.sprites()[0].rect.centerx,
+     (40, test_model.SCREEN_WIDTH-40)),
     # Check that the second comet spawns in the correct x position range
-    (test_obstacles.sprites()[1].rect.centerx, (40, test_model.SCREEN_WIDTH-40)),
+    (test_obstacles.sprites()[1].rect.centerx,
+     (40, test_model.SCREEN_WIDTH-40)),
     # Check that the third comet spawns in the correct x position range
-    (test_obstacles.sprites()[2].rect.centerx, (40, test_model.SCREEN_WIDTH-40)),
+    (test_obstacles.sprites()[2].rect.centerx,
+     (40, test_model.SCREEN_WIDTH-40)),
 ]
 
 comet_yposition_cases = [
@@ -164,7 +164,7 @@ comet_fall_cases = [
     ((test_obstacles.sprites()[2], 2), 8),
     # Check that third comet moves down 12 pixels when move() called thrice
     ((test_obstacles.sprites()[2], 3), 12),
-] 
+]
 
 comet_respawn_cases = [
     # Check that first comet respawns at the top of the screen when located
@@ -213,6 +213,8 @@ initial_seed_cases = [
 
 # Test that each attribute of the Ark Game class and its subclasses is
 # correctly initialized
+
+
 @pytest.mark.parametrize("attribute,value", initial_game_cases)
 def test_game_initial_attributes(attribute, value):
     """
@@ -225,6 +227,8 @@ def test_game_initial_attributes(attribute, value):
     assert attribute == value
 
 # Test that set_lives function works correctly
+
+
 @pytest.mark.parametrize("num,value", set_life_cases)
 def test_set_lives(num, value):
     """
@@ -236,9 +240,11 @@ def test_set_lives(num, value):
     """
     test_model.set_lives(num)
     new_lives = test_model.lives
-    assert  new_lives == value
+    assert new_lives == value
 
 # Test that lose_life function works correctly
+
+
 @pytest.mark.parametrize("lives,value", life_decrease_cases)
 def test_lose_life(lives, value):
     """
@@ -260,6 +266,8 @@ def test_lose_life(lives, value):
     assert new_num_lives == value
 
 # Test that set_score function works correctly
+
+
 @pytest.mark.parametrize("num,value", set_score_cases)
 def test_set_score(num, value):
     """
@@ -271,9 +279,11 @@ def test_set_score(num, value):
     """
     test_model.set_score(num)
     new_score = test_model.score
-    assert  new_score == value
+    assert new_score == value
 
 # Test that inc_score function works correctly
+
+
 @pytest.mark.parametrize("scores,value", score_increase_cases)
 def test_inc_score(scores, value):
     """
@@ -295,6 +305,8 @@ def test_inc_score(scores, value):
 
 # Test that each comet obstacle of the first level only spawns in the correct
 # x-coordinate range.
+
+
 @pytest.mark.parametrize("attribute,value", comet_xposition_cases)
 def test_generate_obstacles_xpositions(attribute, value):
     """
@@ -304,10 +316,12 @@ def test_generate_obstacles_xpositions(attribute, value):
         attribute: The x-position that the code generates for the comet.
         value: The x-position each icon should be spawned at.
     """
-    pos = (attribute >= value[0]) and (attribute <= value[1])
+    pos = value[0] <= attribute <= value[1]
     assert pos
 
 # Test that each comet obstacle of the first level spawns at the top of the screen
+
+
 @pytest.mark.parametrize("attribute,value", comet_yposition_cases)
 def test_generate_obstacles_ypositions(attribute, value):
     """
@@ -320,6 +334,8 @@ def test_generate_obstacles_ypositions(attribute, value):
     assert attribute == value
 
 # Test that each seed icon of the first level spawns at the right position.
+
+
 @pytest.mark.parametrize("attribute,value", seeds_cases)
 def test_generate_seeds(attribute, value):
     """
@@ -332,6 +348,8 @@ def test_generate_seeds(attribute, value):
     assert attribute == value
 
 # Test that each attribute of the Comet class is correctly initialized
+
+
 @pytest.mark.parametrize("attribute,value", initial_comet_cases)
 def test_comet_initial_attributes(attribute, value):
     """
@@ -344,6 +362,8 @@ def test_comet_initial_attributes(attribute, value):
     assert attribute == value
 
 # Test that the Comets are falling at the correct speeds
+
+
 @pytest.mark.parametrize("comet,value", comet_fall_cases)
 def test_comet_falling(comet, value):
     """
@@ -365,6 +385,8 @@ def test_comet_falling(comet, value):
     assert diff == value
 
 # Test that the Comets are respawning correctly when move() called
+
+
 @pytest.mark.parametrize("comet,value", comet_respawn_cases)
 def test_comet_respawning(comet, value):
     """
@@ -382,6 +404,8 @@ def test_comet_respawning(comet, value):
     assert new_position == value
 
 # Test that each attribute of the Seed class is correctly initialized
+
+
 @pytest.mark.parametrize("attribute,value", initial_seed_cases)
 def test_seed_initial_attributes(attribute, value):
     """

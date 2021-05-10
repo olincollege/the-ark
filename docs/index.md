@@ -2,7 +2,7 @@
 Hello Player! Welcome to the Ark, Humanitiy's last refuge. In order to be saved, you need to collect essential seeds and avoid being devoured.
 
 ## Background
-The worst of the climate change predictions have come true: Earth can no longer sustain life, and the clock is running out. Luckily, a group of smart individuals were able to convince the world's leaders to fund another International Space Station able to sustain human life and travel the void of space called the Ark.As a member of the ark’s agricultural department, the player’s job is to collect seeds of various essential fruits and vegetables from a hostile earth to bring back to the ark to cultivate them. On their journey they must avoid falling comets, and other obstacles as they travel to various regions.
+The worst of the climate change predictions have come true: Earth can no longer sustain life, and the clock has run out. Luckily, a group of smart individuals were able to convince the world's leaders to fund another International Space Station able to sustain human life and travel the void of space called the Ark. As a member of the Ark’s agricultural department, the player’s job is to collect seeds of various essential fruits and vegetables from a hostile earth to bring back to the Ark to cultivate them. On their journey they must avoid falling comets, and other obstacles as they travel to various regions.
 
 
 ## How to Play
@@ -42,3 +42,6 @@ Here are the original links for the images we used for our game:
 - Comet Obstacles - (http://pixelartmaker.com/art/8688dacfe59df70)
 
 We used [Pixel Art](https://www.pixilart.com/) in order to resize the images for our game.
+
+## Game Notes
+This game is intended to have multiple levels, however due to limited time, it is set up with one level. To keep true to the intended structure of the game, all code and descriptions of the game still imply a multi-level setup, even though we were only able to write the code for one (i.e. instead of creating just an ArkGame class in the code, we created and used the LevelOneArkGame class).

@@ -23,11 +23,13 @@ screen_cases = [
 ]
 
 # Test the set_screen function
+
+
 @pytest.mark.parametrize("actual,expected", screen_cases)
-def test_set_screen(actual,expected):
+def test_set_screen(actual, expected):
     """
     Check that screen window is initialized with the correct properties
-    
+
     Args:
         actual: The actual value of specific screen window property.
         expected: The intended vaue of that property.

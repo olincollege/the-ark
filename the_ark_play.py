@@ -36,9 +36,11 @@ player = ArkController(game, comets, seeds)
 all_sprites.add(player)
 movable_sprites.add(player)
 display_surf = game_view.set_screen()
+# loads and starts music
+pygame.mixer.music.load("music-out_there.wav")
+pygame.mixer.music.play(loops=-1)
 
-
-while True:   
+while True:
     # If the player cliks the x button, the game window closes and
     # the program ends
     for event in pygame.event.get():
